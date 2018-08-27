@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>v-model</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>demo6 v-model</h1>
+    <hr>
+    
+    <div id="app">
+        <p> {{ message }} </p>
+        <div>
+            基本双向绑定：<input v-model="message"/>
+        </div>
+        <div>
+            v-model.lazy：<input v-model.lazy="message"/>
+        </div>
+        <div>
+            v-model.number：<input v-model.number="message"/>
+        </div>
+        <div>
+            v-model.trim：<input v-model.trim="message"/>
+        </div>
+        <div>
+            文本区域加入数据绑定：
+            <textarea cols="10" rows="5" v-model=" message "></textarea>
+        </div>
+        <div>
+            多选按钮绑定一个值：
+            <input type="checkbox" id="w-checkbox" v-model=" isTrue "/>
+            <label v-text=" isTrue ">  </label>
+        </div>
+        <div>
+            多选绑定一个数组：
+            <input type="checkbox" value="first-checkbox" id="first-checkbox" v-model=" checkboxArr "/>
+            <input type="checkbox" value="second-checkbox" id="second-checkbox" v-model=" checkboxArr "/>
+            <input type="checkbox" value="third-checkbox" id="third-checkbox" v-model=" checkboxArr "/>
+            <label> {{ checkboxArr }} </label>
+        </div>
+        <div>
+            单选按钮绑定数据：
+            <input type="radio" value="first-radio" id="first-radio" v-model=" radioVal "/>
+            <input type="radio" value="second-radio" id="second-radio" v-model=" radioVal "/>
+            <input type="radio" value="third-radio" id="third-radio" v-model=" radioVal "/>
+            <label> {{ radioVal }} </label>
+        </div>
+    </div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            message : "helloworld" ,
+            isTrue : false,
+            checkboxArr : [],
+            radioVal : "first-radio",
+        }
+    })
+</script>
+</body>
+</html>

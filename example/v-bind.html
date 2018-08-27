@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>v-bind</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <style>
+        .classA{color:red;}
+        .classB{text-decoration: underline;}
+        .colorGreen{color: green};
+    </style>
+</head>
+<body>
+    <h1>demo7 v-bind</h1>
+    <hr>
+    <div id="app">
+        <div>
+            <p> 
+                普通bind：
+                <img v-bind:src="imgSrc" width="200" height="100"/>
+                <a :href="ahref" :target="aTarget" >baidu</a>
+            </p>
+            <p> 
+                绑定class：
+                <span :class="className">vue</span>
+            </p>
+            <p> 
+                判断绑定class：
+                {{ isRed }}    <span :class="{ classA : isRed }">vue</span>
+                <input type="checkbox" v-model="isRed"/>
+            </p>
+            <p> 
+                绑定class数组：
+                <span :class="[className,className2]">v u e</span>
+            </p>
+                <p> 
+                    三元运算符判断绑定class数组：
+                    <button>{{ isGreen }}</button>
+                    <input type="checkbox" v-model="isGreen"/>
+                    <span :class="isGreen ? colorG : className">vue</span>
+                </p>
+        </div>
+    </div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            imgSrc : "../assets/imgs/logo.png" ,
+            ahref : "../index.html",
+            aTarget : "_blank",
+            className : "classA",
+            className2: "classB",
+            colorG : "colorGreen",
+            isRed : false,
+            isGreen : true ,
+        }
+    })
+</script>
+</body>
+</html>

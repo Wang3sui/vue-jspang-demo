@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>v-for</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>demo3 v-for</h1>
+    <hr>
+    <div id="app">
+        <p>基本</p>
+        <ul>
+            <li v-for="item in items">
+                {{ item }}
+            </li>
+        </ul>
+        <p> 基本-排序 </p>
+        <ul>
+            <li v-for="item1 in sortItems">
+                {{ item1 }}
+            </li>
+        </ul>
+        <p> 对象 </p>
+        <ul>
+            <li v-for="( student,index ) in students">
+               {{index}} : {{ student.name }} +{{ student.age }}
+            </li>
+        </ul>
+        <p> 对象排序 </p>
+        <ul>
+            <li v-for="( stu,index ) in sortStudents">
+               {{index}} : {{ stu.name }} +{{ stu.age }}
+            </li>
+        </ul>
+    </div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+           items:[2,1,4,3,6,4,7],
+           items1:[20,23,18,65,32,19,5,56,41],
+           students:[
+               {name:"wang",age:25},
+               {name:"sun",age:15},
+               {name:"li",age:5},
+               {name:"zhang",age:20},
+           ],
+           students1:[
+               {name:"wang",age:25},
+               {name:"sun",age:15},
+               {name:"li",age:5},
+               {name:"zhang",age:20},
+           ],
+        },
+        computed:{
+            sortItems:function(){
+                return this.items1.sort(sortNumber);
+                // return this.items1.sort();
+            },
+            sortStudents:function(){
+                return sortByKey(this.students1,'age');
+            }
+        }
+    })
+    function sortByKey( arr , key ){
+        return arr.sort(function(a,b){
+            var x = a[key],y = b[key];
+            return ((x>y)? -1:((x<y)?1:0));
+        })
+    }
+
+    function sortNumber(a,b){
+        return a-b;
+    }
+</script>
+</body>
+</html>

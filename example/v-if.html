@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>helloword</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>demo2 v-if v-else v-show</h1>
+    <hr>
+    <div id="app">
+        <div v-if="isLogin">
+            你好，你已经登陆
+        </div>
+        <div v-else="isLogin">
+            请登陆
+        </div>
+    </div>
+<script>
+    var app=new Vue({
+        el:"#app",
+        data:{
+            isLogin: false,
+        }
+    })
+</script>
+</body>
+</html>

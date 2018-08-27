@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>v-on</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>demo5 v-on</h1>
+    <hr>
+    <div id="app" @mouseEnter="mouseEnter">
+      本场比赛得分：{{ count }} <br/>
+      <button v-on:click="up">up</button>
+      <button @click="down">down</button>
+      <br/>
+      <input type="text" @/>
+    </div>
+<script>
+    var app = new Vue({
+        el : "#app",
+        data : {
+            count: 1,
+        },
+        methods:{
+            mouseEnter:function(){
+                console.log("enter")
+            },
+            up: function(){
+                this.count++;
+            },
+            down: function(){
+                if(this.count<=0){
+                    alert("000");
+                }else{
+                    this.count--;
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

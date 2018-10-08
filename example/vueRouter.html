@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../assets/js/vue.js"></script>
+    <script src="../assets/js/vue-router.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+<script>
+    var myLogout={
+        template:`<div>logout</div>`
+    }
+    var myLogin={
+        template:`<div>login</div>`
+    }
+    // 安装插件
+    Vue.use(VueRouter);
+    // 创建一个路由
+    var router = new VueRouter({
+        routes:[
+            {
+                path:"/login",component:myLogin
+            },
+            {
+                path:"/logout",component:myLogout
+            }
+        ]
+    })
+    // 指定路由改变局部位置
+    // 配置好的路由匹配到vue实例
+    var app= new Vue({
+        el:"#app",
+        template : `
+            <div>
+                <p>vue-router</p>
+                <router-view></router-view>
+            </div>`,
+        router:router,
+    })
+</script>
+</body>
+</html>

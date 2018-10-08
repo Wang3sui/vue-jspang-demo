@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app"></div>
+<script>
+    Vue.component("myChild",{
+        template:`<div><span>child</span></div>`,
+    })
+    var myApp={
+        data:function(){
+            return {
+                num:0,
+            }
+        },
+        template:`
+            <div>
+                <p ref="numSpan">{{ num }}</p>
+                <button @click="addNum">add</button>
+                <hr>
+                <myChild ref="childComponent"/>
+                <button @click="getChild">getChild</button>
+            </div>
+        `,
+        methods:{
+            addNum:function(){
+                var numSpan=parseInt(this.$refs.numSpan.innerText)+1;
+                console.log(numSpan)
+                this.$refs.numSpan.innerText=numSpan;
+            },
+            getChild:function(){
+                console.log(this.$refs.childComponent)
+            }
+        }
+    }
+    var app=new Vue({
+        el:"#app",
+        template:"<my-app/>",
+        components:{
+            "my-app":myApp,
+        }
+    })
+</script>
+</body>
+</html>
